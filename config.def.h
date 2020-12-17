@@ -76,6 +76,7 @@ static const char *volupcmd[] = { "pactl", "set-sink-volume", "0", "+5%", NULL }
 static const char *voldowncmd[] = { "pactl", "set-sink-volume", "0", "-5%", NULL };
 static const char *brupcmd[] = { "sudo", "xbacklight", "-inc", "10", NULL };
 static const char *brdowncmd[] = { "sudo", "xbacklight", "-dec", "10", NULL };
+static const char *rotatescreencmd[] = { "/home/xlc/.local/share/dwm/screen_rotate.sh", NULL };
 
 
 static Key keys[] = {
@@ -85,6 +86,7 @@ static Key keys[] = {
 	{ 0,          XF86XK_AudioRaiseVolume,     spawn,          {.v = volupcmd } },
 	{ 0,          XF86XK_MonBrightnessUp,      spawn,          {.v = brupcmd} },
 	{ 0,          XF86XK_MonBrightnessDown,    spawn,          {.v = brdowncmd} },
+	{ MODKEY|ShiftMask,             XK_r,      spawn,          {.v = rotatescreencmd } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_s,      togglescratch,  {.v = scratchpadcmd } },
