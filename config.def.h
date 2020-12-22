@@ -44,7 +44,7 @@ static const Rule rules[] = {
 /* layout(s) */
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
@@ -77,7 +77,9 @@ static const char *voldowncmd[] = { "pactl", "set-sink-volume", "0", "-5%", NULL
 static const char *brupcmd[] = { "sudo", "xbacklight", "-inc", "10", NULL };
 static const char *brdowncmd[] = { "sudo", "xbacklight", "-dec", "10", NULL };
 static const char *rotatescreencmd[] = { "/home/xlc/.local/share/dwm/screen_rotate.sh", NULL };
-
+static const char *reboot[] = { "/home/xlc/.local/share/dwm/dmenu/confirm.sh", "reboot", NULL };
+static const char *poweroff[] = { "/home/xlc/.local/share/dwm/dmenu/confirm.sh", "poweroff", NULL };
+static const char *usefuldir[] = { "/home/xlc/.local/share/dwm/dmenu/dirlink.sh", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -88,8 +90,11 @@ static Key keys[] = {
 	{ 0,          XF86XK_MonBrightnessDown,    spawn,          {.v = brdowncmd} },
 	{ MODKEY|ShiftMask,             XK_r,      spawn,          {.v = rotatescreencmd } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY|ControlMask,           XK_p,      spawn,          {.v = poweroff } },
+	{ MODKEY|ControlMask,           XK_r,      spawn,          {.v = reboot } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_s,      togglescratch,  {.v = scratchpadcmd } },
+	{ MODKEY|ControlMask,           XK_d,      spawn,          {.v = usefuldir } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstackvis,  {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstackvis,  {.i = -1 } },
